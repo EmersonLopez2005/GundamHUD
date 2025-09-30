@@ -12,7 +12,14 @@
   // 等待DOM加载完成
   function initExiaTheme() {
     // 检查是否是管理页面
-    if (isAdminPage()) {
+    const isAdminResult = window.isAdminPage?.();
+
+    if (isAdminResult === undefined) {
+      console.warn('⚠️ 管理页面检测器不可用，跳过主题应用');
+      return;
+    }
+
+    if (isAdminResult) {
       console.log('🔧 检测到管理页面，跳过主题应用');
       return;
     }
