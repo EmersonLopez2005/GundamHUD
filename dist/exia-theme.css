@@ -1,0 +1,457 @@
+/* ================ 机动战士能天使监控系统 - 主题覆盖样式 ================ */
+
+/* 导入机动战士字体 */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+/* 全局变量 - 能天使配色 */
+:root {
+  --exia-primary: #00ff88 !important;
+  --exia-secondary: #0066cc !important;
+  --exia-accent: #ffffff !important;
+  --exia-warning: #ff6600 !important;
+  --exia-danger: #ff0044 !important;
+  --exia-bg-dark: #0a0a0a !important;
+  --exia-bg-card: rgba(0, 20, 40, 0.9) !important;
+  --exia-border: rgba(0, 255, 136, 0.3) !important;
+}
+
+/* 只在非管理页面应用机动战士样式 */
+body:not([class*="admin"]):not([data-page*="admin"]) * {
+  font-family: 'Orbitron', 'Courier New', monospace !important;
+}
+
+/* 只在主页面应用背景 */
+body:not([class*="admin"]):not([data-page*="admin"]), 
+body:not([class*="admin"]):not([data-page*="admin"]) html, 
+body:not([class*="admin"]):not([data-page*="admin"]) #root {
+  background: linear-gradient(135deg, #0a0a0a 0%, #001122 50%, #000a1a 100%) !important;
+  color: var(--exia-accent) !important;
+  min-height: 100vh !important;
+}
+
+/* 管理页面保持原样 */
+body[class*="admin"], 
+body[data-page*="admin"],
+[href*="/admin"] {
+  background: unset !important;
+  color: unset !important;
+  font-family: unset !important;
+}
+
+/* 顶部导航栏 */
+.header, .navbar, .top-bar, [class*="header"], [class*="navbar"] {
+  background: rgba(0, 20, 40, 0.95) !important;
+  border-bottom: 2px solid var(--exia-primary) !important;
+  backdrop-filter: blur(10px) !important;
+}
+
+/* 标题文字 - 增强绿色发光效果 */
+.title, h1, h2, h3, .logo, [class*="title"], [class*="logo"] {
+  color: var(--exia-primary) !important;
+  text-shadow: 
+    0 0 5px var(--exia-primary),
+    0 0 10px var(--exia-primary),
+    0 0 15px var(--exia-primary),
+    0 0 20px var(--exia-primary),
+    0 0 25px var(--exia-primary) !important;
+  font-weight: 700 !important;
+  animation: titleGlow 2s ease-in-out infinite alternate !important;
+}
+
+/* 页面标题发光动画 */
+@keyframes titleGlow {
+  0% { 
+    text-shadow: 
+      0 0 5px var(--exia-primary),
+      0 0 10px var(--exia-primary),
+      0 0 15px var(--exia-primary),
+      0 0 20px var(--exia-primary);
+  }
+  100% { 
+    text-shadow: 
+      0 0 10px var(--exia-primary),
+      0 0 20px var(--exia-primary),
+      0 0 30px var(--exia-primary),
+      0 0 40px var(--exia-primary);
+  }
+}
+
+/* 服务器卡片 - 只在非管理页面应用 */
+body:not([class*="admin"]):not([data-page*="admin"]) .card, 
+body:not([class*="admin"]):not([data-page*="admin"]) .server-card, 
+body:not([class*="admin"]):not([data-page*="admin"]) .node-card, 
+body:not([class*="admin"]):not([data-page*="admin"]) [class*="card"], 
+body:not([class*="admin"]):not([data-page*="admin"]) [class*="server"], 
+body:not([class*="admin"]):not([data-page*="admin"]) [class*="node"] {
+  background: var(--exia-bg-card) !important;
+  border: 1px solid var(--exia-border) !important;
+  border-radius: 8px !important;
+  box-shadow: 
+    0 0 20px rgba(0, 255, 136, 0.1),
+    inset 0 0 20px rgba(0, 255, 136, 0.05) !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* 卡片悬停效果 - 在线服务器绿色高亮边框，离线服务器保持红色不变 */
+body:not([class*="admin"]):not([data-page*="admin"]) .card:not([class*="offline"]):hover,
+body:not([class*="admin"]):not([data-page*="admin"]) .server-card:not([class*="offline"]):hover,
+body:not([class*="admin"]):not([data-page*="admin"]) .node-card:not([class*="offline"]):hover,
+body:not([class*="admin"]):not([data-page*="admin"]) [class*="card"]:not([class*="offline"]):hover,
+body:not([class*="admin"]):not([data-page*="admin"]) [class*="server"]:not([class*="offline"]):hover,
+body:not([class*="admin"]):not([data-page*="admin"]) [class*="node"]:not([class*="offline"]):hover {
+  border: 2px solid #00ff88 !important;
+  box-shadow:
+    0 0 30px rgba(0, 255, 136, 0.5),
+    inset 0 0 30px rgba(0, 255, 136, 0.2) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* 离线服务器悬停效果 - 保持红色边框不变 */
+body:not([class*="admin"]):not([data-page*="admin"]) .card[class*="offline"]:hover,
+body:not([class*="admin"]):not([data-page*="admin"]) .server-card[class*="offline"]:hover,
+body:not([class*="admin"]):not([data-page*="admin"]) .node-card[class*="offline"]:hover,
+body:not([class*="admin"]):not([data-page*="admin"]) [class*="card"][class*="offline"]:hover,
+body:not([class*="admin"]):not([data-page*="admin"]) [class*="server"][class*="offline"]:hover,
+body:not([class*="admin"]):not([data-page*="admin"]) [class*="node"][class*="offline"]:hover {
+  border: 2px solid var(--exia-danger) !important;
+  box-shadow: 
+    0 0 40px rgba(255, 0, 68, 0.5),
+    inset 0 0 40px rgba(255, 0, 68, 0.2) !important;
+}
+
+/* HUD四角边框效果 */
+.card::before, .server-card::before, .node-card::before,
+[class*="card"]::before, [class*="server"]::before, [class*="node"]::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: 
+    linear-gradient(90deg, var(--exia-primary) 2px, transparent 2px) 0 0,
+    linear-gradient(90deg, var(--exia-primary) 2px, transparent 2px) 0 100%,
+    linear-gradient(0deg, var(--exia-primary) 2px, transparent 2px) 0 0,
+    linear-gradient(0deg, var(--exia-primary) 2px, transparent 2px) 100% 0 !important;
+  background-repeat: no-repeat !important;
+  background-size: 20px 2px, 20px 2px, 2px 20px, 2px 20px !important;
+  pointer-events: none !important;
+  opacity: 0.6 !important;
+}
+
+/* 服务器名称 - 添加高达风格三角形箭头 */
+.server-name, .node-name, .hostname, [class*="name"], [class*="hostname"],
+[class*="server"] [class*="name"], [class*="node"] [class*="name"],
+[class*="card"] [class*="name"], [class*="title"],
+h3.tracking-tight.text-base.font-bold {
+  color: var(--exia-primary) !important;
+  font-weight: 700 !important;
+  text-shadow: 0 0 5px var(--exia-primary) !important;
+  position: relative !important;
+  padding-left: 20px !important;
+}
+
+/* 高达风格三角形箭头 - 在线服务器 */
+.server-name::before, .node-name::before, .hostname::before,
+[class*="name"]::before, [class*="hostname"]::before,
+[class*="server"] [class*="name"]::before, [class*="node"] [class*="name"]::before,
+[class*="card"] [class*="name"]::before, [class*="title"]::before,
+h3.tracking-tight.text-base.font-bold::before {
+  content: '' !important;
+  position: absolute !important;
+  left: 0 !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  width: 0 !important;
+  height: 0 !important;
+  border-left: 8px solid #00ff88 !important;
+  border-top: 5px solid transparent !important;
+  border-bottom: 5px solid transparent !important;
+  filter: drop-shadow(0 0 3px #00ff88) !important;
+  animation: arrowPulse 2s ease-in-out infinite !important;
+  opacity: 1 !important;
+  z-index: 1 !important;
+}
+
+/* 离线服务器名称样式 */
+[class*="offline"] .server-name::before, 
+[class*="offline"] .node-name::before, 
+[class*="offline"] .hostname::before,
+[class*="offline"] [class*="name"]::before,
+[class*="offline"] [class*="server"] [class*="name"]::before,
+[class*="offline"] [class*="node"] [class*="name"]::before,
+[class*="offline"] [class*="card"] [class*="name"]::before,
+[class*="offline"] h3.tracking-tight.text-base.font-bold::before {
+  border-left: 8px solid #ff0044 !important;
+  filter: drop-shadow(0 0 3px #ff0044) !important;
+  animation: none !important;
+  opacity: 1 !important;
+}
+
+/* 箭头脉冲动画 */
+@keyframes arrowPulse {
+  0%, 100% { 
+    border-left: 8px solid #00ff88 !important;
+    filter: drop-shadow(0 0 5px #00ff88) !important;
+    opacity: 1 !important;
+  }
+  50% { 
+    border-left: 8px solid #00cc66 !important;
+    filter: drop-shadow(0 0 10px #00ff88) !important;
+    opacity: 0.8 !important;
+  }
+}
+
+/* 确保箭头可见性 */
+.server-name::before, .node-name::before, .hostname::before,
+[class*="name"]::before, [class*="hostname"]::before {
+  opacity: 1 !important;
+  z-index: 1 !important;
+}
+
+/* 状态指示器 */
+.status, .online, .offline, [class*="status"] {
+  border-radius: 50% !important;
+  box-shadow: 0 0 10px currentColor !important;
+}
+
+.online, [class*="online"] {
+  background: var(--exia-primary) !important;
+  color: var(--exia-primary) !important;
+}
+
+.offline, [class*="offline"] {
+  background: var(--exia-danger) !important;
+  color: var(--exia-danger) !important;
+}
+
+/* 离线服务器卡片整体红色显示 */
+[class*="card"][class*="offline"], 
+[class*="server"][class*="offline"], 
+[class*="node"][class*="offline"],
+.card.offline, .server-card.offline, .node-card.offline {
+  background: rgba(40, 0, 0, 0.9) !important;
+  border: 2px solid var(--exia-danger) !important;
+  box-shadow: 
+    0 0 30px rgba(255, 0, 68, 0.3),
+    inset 0 0 30px rgba(255, 0, 68, 0.1) !important;
+}
+
+/* 离线服务器悬停效果 */
+[class*="card"][class*="offline"]:hover, 
+[class*="server"][class*="offline"]:hover, 
+[class*="node"][class*="offline"]:hover,
+.card.offline:hover, .server-card.offline:hover, .node-card.offline:hover {
+  border-color: var(--exia-danger) !important;
+  box-shadow: 
+    0 0 40px rgba(255, 0, 68, 0.5),
+    inset 0 0 40px rgba(255, 0, 68, 0.2) !important;
+}
+
+/* 离线服务器名称 */
+[class*="offline"] .server-name, 
+[class*="offline"] .node-name, 
+[class*="offline"] .hostname,
+[class*="offline"] [class*="name"] {
+  color: var(--exia-danger) !important;
+  text-shadow: 0 0 10px var(--exia-danger) !important;
+}
+
+/* Exia自定义离线样式 */
+.exia-offline {
+  background: rgba(40, 0, 0, 0.9) !important;
+  border: 2px solid #ff0044 !important;
+  box-shadow: 0 0 30px rgba(255, 0, 68, 0.3) !important;
+}
+
+.exia-offline:hover {
+  box-shadow: 0 0 40px rgba(255, 0, 68, 0.5) !important;
+}
+
+.exia-offline * {
+  color: #ff0044 !important;
+}
+
+.exia-offline .server-name,
+.exia-offline .node-name,
+.exia-offline .hostname {
+  color: #ff0044 !important;
+  text-shadow: 0 0 10px #ff0044 !important;
+}
+
+/* 强制覆盖所有可能的离线状态样式 */
+[class*="card"]:has([class*="offline"]),
+[class*="server"]:has([class*="offline"]),
+[class*="node"]:has([class*="offline"]) {
+  background: rgba(40, 0, 0, 0.9) !important;
+  border: 2px solid #ff0044 !important;
+  box-shadow: 0 0 30px rgba(255, 0, 68, 0.3) !important;
+}
+
+/* 进度条 */
+.progress, .progress-bar, [class*="progress"] {
+  background: rgba(0, 255, 136, 0.1) !important;
+  border-radius: 4px !important;
+  overflow: hidden !important;
+}
+
+.progress-bar, .progress-fill, [class*="progress"] > div {
+  background: linear-gradient(90deg, var(--exia-primary), var(--exia-secondary)) !important;
+  box-shadow: 0 0 10px var(--exia-primary) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* 统计数据 */
+.stats, .metrics, .info, [class*="stats"], [class*="metrics"], [class*="info"] {
+  color: var(--exia-accent) !important;
+}
+
+.cpu, [class*="cpu"] {
+  color: var(--exia-primary) !important;
+}
+
+.memory, .ram, [class*="memory"], [class*="ram"] {
+  color: var(--exia-secondary) !important;
+}
+
+.disk, .storage, [class*="disk"], [class*="storage"] {
+  color: var(--exia-warning) !important;
+}
+
+/* 按钮样式 */
+button, .btn, [class*="button"] {
+  background: rgba(0, 255, 136, 0.1) !important;
+  border: 1px solid var(--exia-primary) !important;
+  color: var(--exia-primary) !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+}
+
+button:hover, .btn:hover, [class*="button"]:hover {
+  background: var(--exia-primary) !important;
+  color: var(--exia-bg-dark) !important;
+  box-shadow: 0 0 15px var(--exia-primary) !important;
+}
+
+/* 输入框 */
+input, select, textarea {
+  background: rgba(0, 20, 40, 0.8) !important;
+  border: 1px solid var(--exia-border) !important;
+  color: var(--exia-accent) !important;
+  border-radius: 4px !important;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--exia-primary) !important;
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.3) !important;
+}
+
+/* 滚动条 */
+::-webkit-scrollbar {
+  width: 8px !important;
+  background: rgba(0, 20, 40, 0.5) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--exia-primary) !important;
+  border-radius: 4px !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--exia-secondary) !important;
+}
+
+/* 表格 */
+table, .table {
+  background: var(--exia-bg-card) !important;
+  border: 1px solid var(--exia-border) !important;
+}
+
+th, .table-header {
+  background: rgba(0, 255, 136, 0.1) !important;
+  color: var(--exia-primary) !important;
+  border-bottom: 1px solid var(--exia-primary) !important;
+}
+
+td, .table-cell {
+  border-bottom: 1px solid var(--exia-border) !important;
+  color: var(--exia-accent) !important;
+}
+
+/* 模态框 */
+.modal, .dialog, [class*="modal"], [class*="dialog"] {
+  background: var(--exia-bg-card) !important;
+  border: 2px solid var(--exia-primary) !important;
+  border-radius: 8px !important;
+  box-shadow: 0 0 50px rgba(0, 255, 136, 0.3) !important;
+}
+
+/* 工具提示 */
+.tooltip, [class*="tooltip"] {
+  background: var(--exia-bg-dark) !important;
+  color: var(--exia-accent) !important;
+  border: 1px solid var(--exia-primary) !important;
+  border-radius: 4px !important;
+}
+
+/* 加载动画 */
+.loading, .spinner, [class*="loading"], [class*="spinner"] {
+  border-color: var(--exia-primary) transparent var(--exia-primary) transparent !important;
+}
+
+/* 警告和错误 */
+.warning, [class*="warning"] {
+  color: var(--exia-warning) !important;
+  border-color: var(--exia-warning) !important;
+}
+
+.error, .danger, [class*="error"], [class*="danger"] {
+  color: var(--exia-danger) !important;
+  border-color: var(--exia-danger) !important;
+}
+
+/* 成功状态 */
+.success, [class*="success"] {
+  color: var(--exia-primary) !important;
+  border-color: var(--exia-primary) !important;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .card, .server-card, .node-card, [class*="card"] {
+    margin: 8px !important;
+    padding: 12px !important;
+  }
+}
+
+/* 动画效果 */
+@keyframes glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.1); }
+  50% { box-shadow: 0 0 30px rgba(0, 255, 136, 0.3); }
+}
+
+.card, .server-card, .node-card, [class*="card"] {
+  animation: glow 3s ease-in-out infinite !important;
+}
+
+/* 扫描线效果 */
+@keyframes scan {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100vw); }
+}
+
+body::after {
+  content: '' !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 2px !important;
+  height: 100vh !important;
+  background: linear-gradient(to bottom, transparent, var(--exia-primary), transparent) !important;
+  animation: scan 4s linear infinite !important;
+  pointer-events: none !important;
+  z-index: 9999 !important;
+  opacity: 0.3 !important;
+}

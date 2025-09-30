@@ -1,0 +1,34 @@
+/* 管理页面修复 - 确保管理页面不受主题影响 */
+
+/* 检测管理页面并恢复原始样式 */
+body[class*="admin"] *,
+body[data-page*="admin"] *,
+[href*="/admin"] *,
+.admin-page *,
+#admin * {
+  background: unset !important;
+  color: unset !important;
+  font-family: unset !important;
+  border: unset !important;
+  box-shadow: unset !important;
+  text-shadow: unset !important;
+}
+
+/* 管理页面表单元素恢复 */
+body[class*="admin"] input,
+body[class*="admin"] select,
+body[class*="admin"] textarea,
+body[class*="admin"] button {
+  background: white !important;
+  color: black !important;
+  border: 1px solid #ccc !important;
+  font-family: inherit !important;
+}
+
+/* URL路径检测 */
+body[data-path*="/admin"] *,
+body[data-url*="/admin"] * {
+  background: unset !important;
+  color: unset !important;
+  font-family: unset !important;
+}
