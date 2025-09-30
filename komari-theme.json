@@ -1,0 +1,128 @@
+{
+  "name": "Mobile Suit Exia Monitor",
+  "short": "Exia",
+  "description": "机动战士能天使监控系统 - 专为Komari Monitor设计的机动战士主题",
+  "version": "1.0.0",
+  "author": "Exia",
+  "url": "https://github.com/EmersonLopez2005/GundamHUD",
+  "preview": "assets/preview.png",
+  "style": "dist/style.css",
+  "loadingAnimation": {
+    "css": "dist/loading-animation.css",
+    "js": "dist/loading-animation.js"
+  },
+  "configuration": {
+    "type": "managed",
+    "data": [
+      {
+        "name": "🎨 机体配色方案",
+        "type": "title"
+      },
+      {
+        "key": "mobile_suit_theme",
+        "name": "机体配色",
+        "type": "select",
+        "default": "exia",
+        "options": "exia,00raiser,dynames,kyrios,virtue,gnx"
+      },
+      {
+        "name": "🌟 特效设置",
+        "type": "title"
+      },
+      {
+        "key": "hud_interface",
+        "name": "HUD界面",
+        "type": "switch",
+        "default": true
+      },
+      {
+        "key": "gn_particles",
+        "name": "GN粒子效果",
+        "type": "select",
+        "default": "medium",
+        "options": "off,low,medium,high"
+      },
+      {
+        "key": "trans_am_mode",
+        "name": "Trans-Am模式",
+        "type": "switch",
+        "default": false
+      },
+      {
+        "key": "radar_scan",
+        "name": "雷达扫描",
+        "type": "switch",
+        "default": true
+      },
+      {
+        "name": "📊 显示设置",
+        "type": "title"
+      },
+      {
+        "key": "default_view",
+        "name": "默认视图",
+        "type": "select",
+        "default": "grid",
+        "options": "grid,list"
+      },
+      {
+        "key": "show_stats_bar",
+        "name": "显示统计栏",
+        "type": "switch",
+        "default": true
+      },
+      {
+        "key": "show_group_bar",
+        "name": "显示分组栏",
+        "type": "switch",
+        "default": true
+      },
+      {
+        "name": "🔧 Instance 设置",
+        "type": "title"
+      },
+      {
+        "key": "enable_instance_details",
+        "name": "启用详情信息",
+        "type": "switch",
+        "default": true
+      },
+      {
+        "key": "show_latency_chart",
+        "name": "显示延迟图表",
+        "type": "switch",
+        "default": true
+      },
+      {
+        "key": "connection_timeout",
+        "name": "连接断点",
+        "type": "number",
+        "default": 5000,
+        "min": 1000,
+        "max": 30000
+      },
+      {
+        "name": "🎮 个性化设置",
+        "type": "title"
+      },
+      {
+        "key": "organization_name",
+        "name": "组织名称",
+        "type": "string",
+        "default": "Celestial Being"
+      },
+      {
+        "key": "mission_code",
+        "name": "任务代号",
+        "type": "string",
+        "default": "Operation Fallen Angels"
+      },
+      {
+        "key": "pilot_callsign",
+        "name": "驾驶员呼号",
+        "type": "string",
+        "default": "Setsuna F. Seiei"
+      }
+    ]
+  }
+}
