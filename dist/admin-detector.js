@@ -6,13 +6,15 @@
   function isAdminPage() {
     const url = window.location.href;
     const pathname = window.location.pathname;
-    
-    return url.includes('/admin') || 
+
+    return url.includes('/admin') ||
            pathname.includes('/admin') ||
            document.title.includes('Admin') ||
            document.title.includes('管理') ||
            document.body.className.includes('admin');
   }
+
+  window.isAdminPage = isAdminPage;
   
   // 如果是管理页面，禁用主题
   if (isAdminPage()) {
